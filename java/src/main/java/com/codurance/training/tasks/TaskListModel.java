@@ -1,6 +1,7 @@
 package com.codurance.training.tasks;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ public class TaskListModel {
     long lastTaskId;
 
     public TaskListModel() {
-        this.projects = new HashSet<>();
+        this.projects = new LinkedHashSet<>();
         this.lastTaskId = 0;
     }
 

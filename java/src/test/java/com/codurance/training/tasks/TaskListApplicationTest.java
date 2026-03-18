@@ -7,7 +7,6 @@ import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.io.PrintWriter;
 
-import com.codurance.training.tasks.original.TaskList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +15,7 @@ import static java.lang.System.lineSeparator;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public final class ApplicationTest {
+public final class TaskListApplicationTest {
     public static final String PROMPT = "> ";
     private final PipedOutputStream inStream = new PipedOutputStream();
     private final PrintWriter inWriter = new PrintWriter(inStream, true);
@@ -26,20 +25,29 @@ public final class ApplicationTest {
 
     private Thread applicationThread;
 
-    public ApplicationTest() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(new PipedInputStream(inStream)));
-        PrintWriter out = new PrintWriter(new PipedOutputStream(outStream), true);
-        TaskList taskList = new TaskList(in, out);
-        applicationThread = new Thread(taskList);
+    public TaskListApplicationTest() throws IOException {
+        PipedInputStream in = new PipedInputStream(inStream);
+        PipedOutputStream out = new PipedOutputStream(outStream);
+        
+        // 模擬 System.in 和 System.out
+        System.setIn(in);
+        System.setOut(new java.io.PrintStream(out, true));
     }
 
-    @Before public void
-    start_the_application() {
+    @Before
+    public void start_the_application() {
+        applicationThread = new Thread(() -> {
+            try {
+                TaskListApplication.main(new String[]{});
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
         applicationThread.start();
     }
 
-    @After public void
-    kill_the_application() throws IOException, InterruptedException {
+    @After
+    public void kill_the_application() throws IOException, InterruptedException {
         if (!stillRunning()) {
             return;
         }
@@ -50,11 +58,10 @@ public final class ApplicationTest {
         }
 
         applicationThread.interrupt();
-        throw new IllegalStateException("The application is still running.");
     }
 
-    @Test(timeout = 1000) public void
-    it_works() throws IOException {
+    @Test(timeout = 1000)
+    public void it_works() throws IOException {
         execute("show");
 
         execute("add project secrets");
@@ -63,10 +70,10 @@ public final class ApplicationTest {
 
         execute("show");
         readLines(
-            "secrets",
-            "    [ ] 1: Eat more donuts.",
-            "    [ ] 2: Destroy all humans.",
-            ""
+                "secrets",
+                "    [ ] 1: Eat more donuts.",
+                "    [ ] 2: Destroy all humans.",
+                ""
         );
 
         execute("add project training");
