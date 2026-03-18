@@ -2,7 +2,6 @@ package com.codurance.training.tasks;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class TaskListController {
     private final BufferedReader in;

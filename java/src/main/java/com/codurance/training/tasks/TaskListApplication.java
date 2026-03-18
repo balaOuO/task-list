@@ -8,7 +8,7 @@ public final class TaskListApplication {
     public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter out = new PrintWriter(System.out);
-        TaskListView view = new TaskListView(out);
+        TaskListView view = new ConsoleTaskListView(out);
         TaskListModel model = new TaskListModel();
         TaskListController controller = new TaskListController(in, model, view);
         while (controller.run()) {
