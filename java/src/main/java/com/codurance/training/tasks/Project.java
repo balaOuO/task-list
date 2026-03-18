@@ -25,19 +25,19 @@ public class Project {
         return taskList.stream().map((t) -> new TaskDto(t.getId(), t.getDescription(), t.isDone())).toList();
     }
 
-    public int check(int id) {
-        return setDoneToTask(id, true);
+    public int check(long taskId) {
+        return setDoneToTask(taskId, true);
     }
 
-    public int unCheck(int id) {
-        return setDoneToTask(id, false);
+    public int unCheck(long taskId) {
+        return setDoneToTask(taskId, false);
     }
 
-    private int setDoneToTask(int id, boolean done) {
+    private int setDoneToTask(long taskId, boolean isDone) {
         int changeTasksCount = 0;
         for (Task task: taskList) {
-            if (task.getId() == id) {
-                task.setDone(done);
+            if (task.getId() == taskId) {
+                task.setDone(isDone);
                 changeTasksCount++;
             }
         }

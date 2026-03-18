@@ -6,28 +6,39 @@ import java.io.PrintWriter;
 
 public class TaskListController {
     private final BufferedReader in;
-    private final PrintWriter out;
     private final TaskListModel model;
+    private final TaskListView view;
 
-    public TaskListController(BufferedReader in, PrintWriter out, TaskListModel model) {
+    public TaskListController(BufferedReader in, TaskListModel model, TaskListView view) {
         this.in = in;
-        this.out = out;
         this.model = model;
+        this.view = view;
     }
 
-    public void run() {
-        out.print("> ");
-        out.flush();
-        String command;
+    public boolean run() {
         try {
-            command = in.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            view.displayWhenStartInput();
+            String userInputStr;
+            try {
+                userInputStr = in.readLine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Command command = CommandFactory.create(userInputStr);
+            command.execute(model, view);
         }
-        if (command.equals("show")) {
-
-        } else {
-//            model.execute();
+        catch (ErrorCommandException e) {
+            view.displayErrorCommand(e.getErrorCommand());
         }
+        catch (TaskNotFoundException e) {
+            view.displayErrorTask(e.getTaskId());
+        }
+        catch (ProjectNotFoundException e) {
+            view.displayErrorProject(e.getProjectName());
+        }
+        catch (UserQuitException e) {
+            return false;
+        }
+        return true;
     }
 }

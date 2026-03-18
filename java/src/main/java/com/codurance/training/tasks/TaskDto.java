@@ -3,7 +3,7 @@ package com.codurance.training.tasks;
 public class TaskDto {
     private final long id;
     private final String description;
-    private boolean done;
+    private final boolean done;
 
     public TaskDto(long id, String description, boolean done) {
         this.id = id;

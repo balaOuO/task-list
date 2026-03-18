@@ -26,6 +26,26 @@ public class TaskListModel {
         targetProjects.forEach((p) -> p.addTask(taskName, getAndUpdateLastTaskId()));
     }
 
+    public void check(long taskId) {
+        int checkNum = 0;
+        for (Project project: projects) {
+            checkNum += project.check(taskId);
+        }
+        if (checkNum == 0) {
+            throw new TaskNotFoundException(taskId);
+        }
+    }
+
+    public void unCheck(long taskId) {
+        int checkNum = 0;
+        for (Project project: projects) {
+            checkNum += project.unCheck(taskId);
+        }
+        if (checkNum == 0) {
+            throw new TaskNotFoundException(taskId);
+        }
+    }
+
     public List<ProjectDto> getProjects() {
         return projects.stream().map((p) -> new ProjectDto(p.getName(), p.getTasks())).toList();
     }
