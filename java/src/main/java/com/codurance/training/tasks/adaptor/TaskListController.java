@@ -1,7 +1,7 @@
 package com.codurance.training.tasks.adaptor;
 
 import com.codurance.training.tasks.entities.ProjectNotFoundException;
-import com.codurance.training.tasks.entities.TaskListModel;
+import com.codurance.training.tasks.entities.TaskList;
 import com.codurance.training.tasks.entities.TaskNotFoundException;
 import com.codurance.training.tasks.use_cases.Command;
 import com.codurance.training.tasks.use_cases.ErrorCommandException;
@@ -12,10 +12,10 @@ import java.io.IOException;
 
 public class TaskListController {
     private final BufferedReader in;
-    private final TaskListModel model;
+    private final TaskList model;
     private final TaskListView view;
 
-    public TaskListController(BufferedReader in, TaskListModel model, TaskListView view) {
+    public TaskListController(BufferedReader in, TaskList model, TaskListView view) {
         this.in = in;
         this.model = model;
         this.view = view;

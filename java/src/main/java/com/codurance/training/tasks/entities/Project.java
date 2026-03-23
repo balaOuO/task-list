@@ -23,8 +23,8 @@ public class Project {
         taskList.add(newTask);
     }
 
-    public List<TaskDto> getTasks() {
-        return taskList.stream().map((t) -> new TaskDto(t.getId(), t.getDescription(), t.isDone())).toList();
+    public List<Task> getTasks() {
+        return taskList;
     }
 
     public int check(long taskId) {

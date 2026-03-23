@@ -6,11 +6,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class TaskListModel {
+public class TaskList {
     Set<Project> projects;
     long lastTaskId;
 
-    public TaskListModel() {
+    public TaskList() {
         this.projects = new LinkedHashSet<>();
         this.lastTaskId = 0;
     }
@@ -48,8 +48,8 @@ public class TaskListModel {
         }
     }
 
-    public List<ProjectDto> getProjects() {
-        return projects.stream().map((p) -> new ProjectDto(p.getName(), p.getTasks())).toList();
+    public List<Project> getProjects() {
+        return projects.stream().toList();
     }
 
     private long getAndUpdateLastTaskId() {
