@@ -1,11 +1,9 @@
 package com.codurance.training.tasks.application;
 
-import com.codurance.training.tasks.application.dto.ProjectDto;
-
-import java.util.List;
+import com.codurance.training.tasks.application.dto.TaskListDto;
 
 public interface TaskListOutputBoundary {
-    void presentProjects(List<ProjectDto> projectDtos);
+    void presentProjects(TaskListDto taskListDto);
     void presentTaskNotFound(long taskId);
     void presentProjectNotFound(String projectName);
     void presentUnknownCommand(String command);

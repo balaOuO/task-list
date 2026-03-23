@@ -2,21 +2,15 @@ package com.codurance.training.tasks.io;
 
 import com.codurance.training.tasks.application.dto.ProjectDto;
 import com.codurance.training.tasks.application.dto.TaskDto;
+import com.codurance.training.tasks.application.dto.TaskListDto;
 import com.codurance.training.tasks.interface_adapters.TaskListView;
 
 import java.io.PrintWriter;
-import java.util.List;
 
 public class TaskListConsoleView implements TaskListView {
     private final PrintWriter out;
     public TaskListConsoleView(PrintWriter out) {
         this.out = out;
-    }
-
-    @Override
-    public void displayWhenStartInput() {
-        out.print("> ");
-        out.flush();
     }
 
     @Override
@@ -31,8 +25,8 @@ public class TaskListConsoleView implements TaskListView {
     }
 
     @Override
-    public void show(List<ProjectDto> projects) {
-        for (ProjectDto project: projects) {
+    public void show(TaskListDto taskListDto) {
+        for (ProjectDto project: taskListDto.getProjectDtos()) {
             out.println(project.getName());
             for (TaskDto task: project.getTaskDtos()) {
                 out.printf("    [%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription());

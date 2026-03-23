@@ -1,9 +1,7 @@
 package com.codurance.training.tasks.interface_adapters;
 
 import com.codurance.training.tasks.application.TaskListOutputBoundary;
-import com.codurance.training.tasks.application.dto.ProjectDto;
-
-import java.util.List;
+import com.codurance.training.tasks.application.dto.TaskListDto;
 
 public class TaskListPresenter implements TaskListOutputBoundary {
     private final TaskListView view;
@@ -12,8 +10,8 @@ public class TaskListPresenter implements TaskListOutputBoundary {
     }
 
     @Override
-    public void presentProjects(List<ProjectDto> projectDtos) {
-        view.show(projectDtos);
+    public void presentProjects(TaskListDto taskListDto) {
+        view.show(taskListDto);
     }
 
     @Override
