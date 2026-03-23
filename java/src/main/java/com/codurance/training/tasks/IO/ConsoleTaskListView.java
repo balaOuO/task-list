@@ -1,4 +1,8 @@
-package com.codurance.training.tasks;
+package com.codurance.training.tasks.IO;
+
+import com.codurance.training.tasks.use_cases.ProjectDto;
+import com.codurance.training.tasks.use_cases.TaskDto;
+import com.codurance.training.tasks.adaptor.TaskListView;
 
 import java.io.PrintWriter;
 import java.util.List;

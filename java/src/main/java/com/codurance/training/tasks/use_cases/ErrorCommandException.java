@@ -1,4 +1,4 @@
-package com.codurance.training.tasks;
+package com.codurance.training.tasks.use_cases;
 
 public class ErrorCommandException extends RuntimeException {
     String errorCommand;

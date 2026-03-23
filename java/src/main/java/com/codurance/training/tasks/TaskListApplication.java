@@ -1,5 +1,10 @@
 package com.codurance.training.tasks;
 
+import com.codurance.training.tasks.IO.ConsoleTaskListView;
+import com.codurance.training.tasks.adaptor.TaskListController;
+import com.codurance.training.tasks.adaptor.TaskListView;
+import com.codurance.training.tasks.entities.TaskListModel;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;

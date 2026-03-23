@@ -1,4 +1,11 @@
-package com.codurance.training.tasks;
+package com.codurance.training.tasks.adaptor;
+
+import com.codurance.training.tasks.entities.ProjectNotFoundException;
+import com.codurance.training.tasks.entities.TaskListModel;
+import com.codurance.training.tasks.entities.TaskNotFoundException;
+import com.codurance.training.tasks.use_cases.Command;
+import com.codurance.training.tasks.use_cases.ErrorCommandException;
+import com.codurance.training.tasks.use_cases.UserQuitException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
