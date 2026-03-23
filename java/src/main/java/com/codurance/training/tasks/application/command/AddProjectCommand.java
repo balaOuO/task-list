@@ -1,9 +1,9 @@
-package com.codurance.training.tasks.application;
+package com.codurance.training.tasks.application.command;
 
 import com.codurance.training.tasks.domain.TaskList;
 import com.codurance.training.tasks.interface_adapters.TaskListView;
 
-public class AddProjectCommand implements Command{
+public class AddProjectCommand implements Command {
     String projectName;
 
     public AddProjectCommand(String projectName) {

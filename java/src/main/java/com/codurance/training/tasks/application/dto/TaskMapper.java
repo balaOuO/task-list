@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.application;
+package com.codurance.training.tasks.application.dto;
 
 import com.codurance.training.tasks.domain.Task;
 

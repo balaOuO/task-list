@@ -1,11 +1,11 @@
 package com.codurance.training.tasks.interface_adapters;
 
-import com.codurance.training.tasks.domain.ProjectNotFoundException;
+import com.codurance.training.tasks.domain.exception.ProjectNotFoundException;
 import com.codurance.training.tasks.domain.TaskList;
-import com.codurance.training.tasks.domain.TaskNotFoundException;
-import com.codurance.training.tasks.application.Command;
-import com.codurance.training.tasks.application.ErrorCommandException;
-import com.codurance.training.tasks.application.UserQuitException;
+import com.codurance.training.tasks.domain.exception.TaskNotFoundException;
+import com.codurance.training.tasks.application.command.Command;
+import com.codurance.training.tasks.application.exception.ErrorCommandException;
+import com.codurance.training.tasks.application.exception.UserQuitException;
 
 import java.io.BufferedReader;
 import java.io.IOException;

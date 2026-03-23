@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.interface_adapters;
 
-import com.codurance.training.tasks.application.ProjectDto;
+import com.codurance.training.tasks.application.dto.ProjectDto;
 
 import java.util.List;
 

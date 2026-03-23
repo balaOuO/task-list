@@ -1,7 +1,7 @@
 package com.codurance.training.tasks.io;
 
-import com.codurance.training.tasks.application.ProjectDto;
-import com.codurance.training.tasks.application.TaskDto;
+import com.codurance.training.tasks.application.dto.ProjectDto;
+import com.codurance.training.tasks.application.dto.TaskDto;
 import com.codurance.training.tasks.interface_adapters.TaskListView;
 
 import java.io.PrintWriter;

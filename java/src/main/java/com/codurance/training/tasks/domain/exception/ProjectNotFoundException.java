@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.domain;
+package com.codurance.training.tasks.domain.exception;
 
 public class ProjectNotFoundException extends RuntimeException {
     String projectName;

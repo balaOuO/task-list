@@ -1,5 +1,8 @@
 package com.codurance.training.tasks.domain;
 
+import com.codurance.training.tasks.domain.exception.ProjectNotFoundException;
+import com.codurance.training.tasks.domain.exception.TaskNotFoundException;
+
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;

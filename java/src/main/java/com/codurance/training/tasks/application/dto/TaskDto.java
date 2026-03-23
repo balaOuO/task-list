@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.application;
+package com.codurance.training.tasks.application.dto;
 
 public class TaskDto {
     private final long id;
