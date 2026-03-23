@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.entities;
+package com.codurance.training.tasks.domain;
 
 public final class Task {
     private final long id;

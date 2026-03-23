@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.use_cases;
+package com.codurance.training.tasks.application;
 
 import java.util.List;
 

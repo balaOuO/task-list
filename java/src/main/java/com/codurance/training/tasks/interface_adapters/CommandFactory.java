@@ -1,6 +1,6 @@
-package com.codurance.training.tasks.adaptor;
+package com.codurance.training.tasks.interface_adapters;
 
-import com.codurance.training.tasks.use_cases.*;
+import com.codurance.training.tasks.application.*;
 
 public class CommandFactory {
     public static Command create(String userInputStr) {

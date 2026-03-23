@@ -1,6 +1,4 @@
-package com.codurance.training.tasks.entities;
-
-import com.codurance.training.tasks.use_cases.ProjectDto;
+package com.codurance.training.tasks.domain;
 
 import java.util.LinkedHashSet;
 import java.util.List;

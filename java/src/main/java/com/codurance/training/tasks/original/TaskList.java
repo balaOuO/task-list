@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.original;
 
-import com.codurance.training.tasks.entities.Task;
+import com.codurance.training.tasks.domain.Task;
 
 import java.io.BufferedReader;
 import java.io.IOException;

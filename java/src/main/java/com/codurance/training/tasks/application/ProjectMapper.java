@@ -1,6 +1,6 @@
-package com.codurance.training.tasks.use_cases;
+package com.codurance.training.tasks.application;
 
-import com.codurance.training.tasks.entities.Project;
+import com.codurance.training.tasks.domain.Project;
 
 import java.util.List;
 

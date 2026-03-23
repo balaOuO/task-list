@@ -1,9 +1,9 @@
 package com.codurance.training.tasks;
 
-import com.codurance.training.tasks.IO.ConsoleTaskListView;
-import com.codurance.training.tasks.adaptor.TaskListController;
-import com.codurance.training.tasks.adaptor.TaskListView;
-import com.codurance.training.tasks.entities.TaskList;
+import com.codurance.training.tasks.io.ConsoleTaskListView;
+import com.codurance.training.tasks.interface_adapters.TaskListController;
+import com.codurance.training.tasks.interface_adapters.TaskListView;
+import com.codurance.training.tasks.domain.TaskList;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

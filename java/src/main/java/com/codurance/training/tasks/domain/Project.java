@@ -1,6 +1,4 @@
-package com.codurance.training.tasks.entities;
-
-import com.codurance.training.tasks.use_cases.TaskDto;
+package com.codurance.training.tasks.domain;
 
 import java.util.ArrayList;
 import java.util.List;

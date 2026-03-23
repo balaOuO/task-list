@@ -1,7 +1,7 @@
-package com.codurance.training.tasks.use_cases;
+package com.codurance.training.tasks.application;
 
-import com.codurance.training.tasks.entities.TaskList;
-import com.codurance.training.tasks.adaptor.TaskListView;
+import com.codurance.training.tasks.domain.TaskList;
+import com.codurance.training.tasks.interface_adapters.TaskListView;
 
 public class CheckCommand implements Command{
     long taskId;
