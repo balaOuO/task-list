@@ -1,5 +1,6 @@
 package com.codurance.training.tasks.application.command;
 
+import com.codurance.training.tasks.application.TaskListOutputBoundary;
 import com.codurance.training.tasks.application.dto.ProjectDto;
 import com.codurance.training.tasks.application.dto.ProjectMapper;
 import com.codurance.training.tasks.domain.TaskList;
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class ShowCommand implements Command {
     @Override
-    public void execute(TaskList model, TaskListView view) {
+    public void execute(TaskList model, TaskListOutputBoundary taskListOutputBoundary) {
         List<ProjectDto> projects = ProjectMapper.toDtos(model.getProjects());
-        view.show(projects);
+        taskListOutputBoundary.presentProjects(projects);
     }
 }

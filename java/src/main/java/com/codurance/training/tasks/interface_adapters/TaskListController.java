@@ -1,5 +1,6 @@
 package com.codurance.training.tasks.interface_adapters;
 
+import com.codurance.training.tasks.application.TaskListOutputBoundary;
 import com.codurance.training.tasks.domain.exception.ProjectNotFoundException;
 import com.codurance.training.tasks.domain.TaskList;
 import com.codurance.training.tasks.domain.exception.TaskNotFoundException;
@@ -14,11 +15,13 @@ public class TaskListController {
     private final BufferedReader in;
     private final TaskList model;
     private final TaskListView view;
+    private final TaskListOutputBoundary taskListOutputBoundary;
 
-    public TaskListController(BufferedReader in, TaskList model, TaskListView view) {
+    public TaskListController(BufferedReader in, TaskList model, TaskListView view, TaskListOutputBoundary taskListOutputBoundary) {
         this.in = in;
         this.model = model;
         this.view = view;
+        this.taskListOutputBoundary = taskListOutputBoundary;
     }
 
     public boolean run() {
@@ -31,7 +34,7 @@ public class TaskListController {
                 throw new RuntimeException(e);
             }
             Command command = CommandFactory.create(userInputStr);
-            command.execute(model, view);
+            command.execute(model, taskListOutputBoundary);
         }
         catch (ErrorCommandException e) {
             view.displayErrorCommand(e.getErrorCommand());
