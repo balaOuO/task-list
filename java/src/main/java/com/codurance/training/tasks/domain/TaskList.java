@@ -21,7 +21,7 @@ public class TaskList {
         projects.add(project);
     }
 
-    public void addTask(String projectName, String taskName) {
+    public void addTask(String projectName, String taskName) throws ProjectNotFoundException {
         List<Project> targetProjects = projects.stream().filter((p)->p.name.equals(projectName)).toList();
         if (targetProjects.isEmpty()) {
             throw new ProjectNotFoundException(projectName);
@@ -29,7 +29,7 @@ public class TaskList {
         targetProjects.forEach((p) -> p.addTask(taskName, getAndUpdateLastTaskId()));
     }
 
-    public void check(long taskId) {
+    public void check(long taskId) throws TaskNotFoundException {
         int checkNum = 0;
         for (Project project: projects) {
             checkNum += project.check(taskId);
@@ -39,7 +39,7 @@ public class TaskList {
         }
     }
 
-    public void unCheck(long taskId) {
+    public void unCheck(long taskId) throws TaskNotFoundException {
         int checkNum = 0;
         for (Project project: projects) {
             checkNum += project.unCheck(taskId);

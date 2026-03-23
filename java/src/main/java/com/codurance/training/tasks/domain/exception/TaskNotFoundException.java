@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.domain.exception;
 
-public class TaskNotFoundException extends RuntimeException {
+public class TaskNotFoundException extends Exception {
     long taskId;
 
     public TaskNotFoundException(long taskId) {

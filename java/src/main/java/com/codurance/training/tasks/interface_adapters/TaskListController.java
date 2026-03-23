@@ -1,49 +1,26 @@
 package com.codurance.training.tasks.interface_adapters;
 
 import com.codurance.training.tasks.application.TaskListOutputBoundary;
-import com.codurance.training.tasks.domain.exception.ProjectNotFoundException;
-import com.codurance.training.tasks.domain.TaskList;
-import com.codurance.training.tasks.domain.exception.TaskNotFoundException;
 import com.codurance.training.tasks.application.command.Command;
-import com.codurance.training.tasks.application.exception.ErrorCommandException;
 import com.codurance.training.tasks.application.exception.UserQuitException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
+import com.codurance.training.tasks.domain.TaskList;
 
 public class TaskListController {
-    private final BufferedReader in;
     private final TaskList model;
-    private final TaskListView view;
     private final TaskListOutputBoundary taskListOutputBoundary;
+    private final TaskListInputSource taskListInputSource;
 
-    public TaskListController(BufferedReader in, TaskList model, TaskListView view, TaskListOutputBoundary taskListOutputBoundary) {
-        this.in = in;
+    public TaskListController(TaskList model, TaskListOutputBoundary taskListOutputBoundary, TaskListInputSource taskListInputSource) {
         this.model = model;
-        this.view = view;
         this.taskListOutputBoundary = taskListOutputBoundary;
+        this.taskListInputSource = taskListInputSource;
     }
 
     public boolean run() {
         try {
-            view.displayWhenStartInput();
-            String userInputStr;
-            try {
-                userInputStr = in.readLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            String userInputStr = taskListInputSource.readCommand();
             Command command = CommandFactory.create(userInputStr);
             command.execute(model, taskListOutputBoundary);
-        }
-        catch (ErrorCommandException e) {
-            view.displayErrorCommand(e.getErrorCommand());
-        }
-        catch (TaskNotFoundException e) {
-            view.displayErrorTask(e.getTaskId());
-        }
-        catch (ProjectNotFoundException e) {
-            view.displayErrorProject(e.getProjectName());
         }
         catch (UserQuitException e) {
             return false;

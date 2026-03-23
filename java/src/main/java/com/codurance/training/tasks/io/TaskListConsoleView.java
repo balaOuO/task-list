@@ -7,9 +7,9 @@ import com.codurance.training.tasks.interface_adapters.TaskListView;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class ConsoleTaskListView implements TaskListView {
-    PrintWriter out;
-    public ConsoleTaskListView(PrintWriter out) {
+public class TaskListConsoleView implements TaskListView {
+    private final PrintWriter out;
+    public TaskListConsoleView(PrintWriter out) {
         this.out = out;
     }
 

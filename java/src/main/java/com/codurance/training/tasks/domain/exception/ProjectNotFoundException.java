@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.domain.exception;
 
-public class ProjectNotFoundException extends RuntimeException {
+public class ProjectNotFoundException extends Exception {
     String projectName;
     public ProjectNotFoundException(String projectName) {
         this.projectName = projectName;
