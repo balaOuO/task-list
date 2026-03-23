@@ -1,6 +1,7 @@
 package com.codurance.training.tasks.application.command;
 
 import com.codurance.training.tasks.application.TaskListOutputBoundary;
+import com.codurance.training.tasks.application.TaskListRepository;
 import com.codurance.training.tasks.domain.TaskList;
 
 public class AddProjectCommand implements Command {
@@ -11,7 +12,9 @@ public class AddProjectCommand implements Command {
     }
 
     @Override
-    public void execute(TaskList taskList, TaskListOutputBoundary taskListOutputBoundary) {
+    public void execute(TaskListRepository taskListRepository, TaskListOutputBoundary taskListOutputBoundary) {
+        TaskList taskList = taskListRepository.get();
         taskList.addProject(projectName);
+        taskListRepository.save(taskList);
     }
 }

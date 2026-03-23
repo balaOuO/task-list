@@ -1,7 +1,7 @@
 package com.codurance.training.tasks;
 
 import com.codurance.training.tasks.application.TaskListOutputBoundary;
-import com.codurance.training.tasks.domain.TaskList;
+import com.codurance.training.tasks.application.TaskListRepository;
 import com.codurance.training.tasks.interface_adapters.TaskListController;
 import com.codurance.training.tasks.interface_adapters.TaskListInputSource;
 import com.codurance.training.tasks.interface_adapters.TaskListPresenter;
@@ -22,8 +22,8 @@ public final class TaskListApplication {
         TaskListInputSource taskListInputSource = new TaskListConsoleInputSource(in, out);
 
         TaskListOutputBoundary taskListOutputBoundary = new TaskListPresenter(view);
-        TaskList model = new TaskList();
-        TaskListController controller = new TaskListController(model, taskListOutputBoundary, taskListInputSource);
+        TaskListRepository taskListRepository = new TaskListRepository();
+        TaskListController controller = new TaskListController(taskListRepository, taskListOutputBoundary, taskListInputSource);
         while (controller.run()) {
         }
     }
